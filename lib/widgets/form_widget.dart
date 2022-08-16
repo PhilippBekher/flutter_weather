@@ -25,17 +25,6 @@ class Form_Widget extends StatelessWidget {
       key: formKey,
       child: Column(
         children: [
-          BlocBuilder<WeatherFetchCubit, WeatherFetchState>(
-            builder: (context, state) {
-              if (state is WeatherFetchLoading) {
-                return Text('loading');
-              } else if (state is WeatherFetchLoaded) {
-                return Text(state.weather.location!.country);
-              } else {
-                return Text('no weather');
-              }
-            },
-          ),
           BlocBuilder<NameTextFieldCubit, NameTextFieldState>(
             builder: (context, state) {
               name_controller.value = TextEditingValue(

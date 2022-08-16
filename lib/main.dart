@@ -94,6 +94,17 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Column(
           children: [
+            BlocBuilder<WeatherFetchCubit, WeatherFetchState>(
+              builder: (context, state) {
+                if (state is WeatherFetchLoading) {
+                  return Text('loading');
+                } else if (state is WeatherFetchLoaded) {
+                  return Text(state.weather.location!.country);
+                } else {
+                  return Text('no weather');
+                }
+              },
+            ),
             Form_Widget(
               formKey: formKey,
               name_controller: name_controller,
